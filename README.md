@@ -1,0 +1,43 @@
+# SakuraB++
+
+Sakura b++ is a pvp and utility mod for minecraft 1.8.x. It supports Forge and Feather adding quality of life improvements, bug fixes, and so much more.<br>
+Not related to Sakura B3/B4 in any way.
+
+## Community
+
+Official Discord of SakuraB++:
+[https://discord.gg/UqJ8ngteud](https://discord.gg/UqJ8ngteud)
+
+---
+
+# Installation & Download
+)
+* Download Essential [here](https://cdn.essential.gg/mods/60ecf53d6b26c76a26d49e5b/62c746c961a27f691be98531/Essential-forge_1-8-9.jar)
+* Download Forge for Minecraft 1.8.9 [here](https://maven.minecraftforge.net/net/minecraftforge/forge/1.8.9-11.15.1.2318-1.8.9/forge-1.8.9-11.15.1.2318-1.8.9-installer.jar) and run the installer.
+* If you cannot find the Forge version, fully close the Minecraft Launcher using Task Manager and reopen it. If you still need help, join the Discord server above.
+* After launching the Forge profile once:
+  * On Windows: go to `%appdata%\.minecraft\mods`
+  * On macOS: go to `~/Library/Application Support/minecraft/mods/`
+* Put both:
+  * `1.8.9.BetterKeystrokes.V-1.2.jar`
+  * `Essential-forge_1-8-9.jar`
+  into the `mods` folder.
+* Launch Minecraft using the Forge profile and you're good to go.
+
+
+# Building Sakurab++ Yourself
+
+1. [Download](https://gradle.org/next-steps/?version=2.7&format=bin) and [install](https://docs.gradle.org/current/userguide/installation.html) Gradle.
+2. Clone this repository to your machine.
+3. Open a terminal or command prompt in the project folder.
+4. Run:
+
+```bash
+./gradlew build
+```
+
+5. The compiled build will be located in:
+
+```text
+build/libs
+```
