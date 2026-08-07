@@ -13,6 +13,7 @@ public class SakuraXdRPC extends SubMode<DiscordRpc> {
     private boolean started;
     private long startTimestamp;
     private String lastServer;
+    private String lastPlayer;
 
     public SakuraXdRPC(String name, DiscordRpc parent) {
         super(name, parent);
@@ -37,8 +38,12 @@ public class SakuraXdRPC extends SubMode<DiscordRpc> {
 
     @Override
     public void onUpdate() {
-        if (started && !Objects.equals(getServer(), lastServer)) {
-            updatePresence();
+        if (started) {
+            String server = getServer();
+            String player = getPlayerName();
+            if (!Objects.equals(server, lastServer) || !Objects.equals(player, lastPlayer)) {
+                updatePresence();
+            }
         }
     }
 
@@ -52,10 +57,16 @@ public class SakuraXdRPC extends SubMode<DiscordRpc> {
         return mc.getCurrentServerData() != null ? mc.getCurrentServerData().serverIP : null;
     }
 
+    private String getPlayerName() {
+        return mc.thePlayer != null ? mc.thePlayer.getName() : null;
+    }
+
     private void updatePresence() {
         String server = getServer();
+        String player = getPlayerName();
         lastServer = server;
-        DiscordRichPresence presence = new DiscordRichPresence.Builder("Cheating my ass off!! >.<")
+        lastPlayer = player;
+        DiscordRichPresence presence = new DiscordRichPresence.Builder(player != null ? "IGN: " + player + "\nCheating my ass off!! >.<" : "Cheating my ass off!! >.<")
                 .setDetails(server != null ? "Playing " + server : "For Minecraft 1.8.9")
                 .setStartTimestamps(startTimestamp)
                 .setBigImage("image_2026-08-07_142439041", "Made by Rein github.com/Recilia")
