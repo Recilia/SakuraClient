@@ -66,11 +66,11 @@ public class SakuraXdRPC extends SubMode<DiscordRpc> {
         String player = getPlayerName();
         lastServer = server;
         lastPlayer = player;
-        DiscordRichPresence presence = new DiscordRichPresence.Builder(player != null ? "IGN: " + player + "\nCheating my ass off!! >.<" : "Cheating my ass off!! >.<")
+        DiscordRichPresence presence = new DiscordRichPresence.Builder("Cheating my ass off!! >.<")
                 .setDetails(server != null ? "Playing " + server : "For Minecraft 1.8.9")
                 .setStartTimestamps(startTimestamp)
-                .setBigImage("image_2026-08-07_142439041", "Made by Rein github.com/Recilia")
-                .setSmallImage("4539817", "Nyooom~ >.<")
+                .setBigImage("image_2026-08-07_142439041", "Made by rein github.com/Recilia")
+                .setSmallImage("4539817", player != null ? "IGN: " + player + " >.<" : "IGN >.<")
                 .build();
         DiscordRPC.discordUpdatePresence(presence);
     }
