@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 @Mod(
         modid = "SakuraClient",
         name = "Sakura",
-        version = "1.2",
+        version = "1.4",
         acceptedMinecraftVersions = "[1.8.9]"
 )
 public class Sakura {
