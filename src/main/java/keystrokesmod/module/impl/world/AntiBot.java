@@ -1,7 +1,7 @@
 package keystrokesmod.module.impl.world;
 
 import com.mojang.authlib.GameProfile;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.SendPacketEvent;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.ModuleManager;
@@ -177,9 +177,9 @@ public class AntiBot extends Module {
     }
 
     private static @NotNull List<String> getTablist() {
-        return Raven.mc.getNetHandler().getPlayerInfoMap().stream()
+        return Sakura.mc.getNetHandler().getPlayerInfoMap().stream()
                 .map(NetworkPlayerInfo::getGameProfile)
-                .filter(profile -> profile.getId() != Raven.mc.thePlayer.getUniqueID())
+                .filter(profile -> profile.getId() != Sakura.mc.thePlayer.getUniqueID())
                 .map(GameProfile::getName)
                 .collect(Collectors.toList());
     }

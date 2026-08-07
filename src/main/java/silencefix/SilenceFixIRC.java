@@ -4,7 +4,7 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.impl.client.Notifications;
 import lombok.Getter;
 import net.minecraft.util.EnumChatFormatting;
@@ -55,7 +55,7 @@ public class SilenceFixIRC {
             }
         });
         bootstrap.connect("cn-wx.kuangmoge.xyz", 41201).sync().addListener(future ->
-                Raven.getExecutor().execute(() -> {
+                Sakura.getExecutor().execute(() -> {
                     if (future.isSuccess()) {
                         this.channel = ((ChannelFuture) future).channel();
                         try {

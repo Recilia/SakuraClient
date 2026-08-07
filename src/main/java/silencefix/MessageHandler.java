@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-import static keystrokesmod.Raven.mc;
+import static keystrokesmod.Sakura.mc;
 
 public class MessageHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private static final Logger logger = LogManager.getLogger("IRCMessageHandler");

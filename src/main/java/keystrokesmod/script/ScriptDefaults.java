@@ -1,6 +1,6 @@
 package keystrokesmod.script;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.ModuleManager;
 import keystrokesmod.module.impl.combat.KillAura;
@@ -512,11 +512,11 @@ public class ScriptDefaults {
         }
 
         public ModuleManager getModuleManager() {
-            return Raven.getModuleManager();
+            return Sakura.getModuleManager();
         }
 
         public ScriptManager getScriptManager() {
-            return Raven.scriptManager;
+            return Sakura.scriptManager;
         }
 
         public Module getModule(String moduleName) {

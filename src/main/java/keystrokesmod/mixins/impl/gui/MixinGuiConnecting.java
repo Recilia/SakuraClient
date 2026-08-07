@@ -20,13 +20,13 @@ public abstract class MixinGuiConnecting extends GuiScreen {
     private NetworkManager networkManager;
 
     @Unique
-    public PreConnectEvent raven_bS$preConnectEvent = null;
+    public PreConnectEvent sakura_bS$preConnectEvent = null;
 
     @Inject(method = "connect", at = @At("HEAD"), cancellable = true)
     public void onConnect(String p_connect_1_, int p_connect_2_, CallbackInfo ci) {
-        raven_bS$preConnectEvent = new PreConnectEvent((GuiConnecting)(Object) this, p_connect_1_, p_connect_2_);
-        MinecraftForge.EVENT_BUS.post(raven_bS$preConnectEvent);
-        if (raven_bS$preConnectEvent.isCanceled()) {
+        sakura_bS$preConnectEvent = new PreConnectEvent((GuiConnecting)(Object) this, p_connect_1_, p_connect_2_);
+        MinecraftForge.EVENT_BUS.post(sakura_bS$preConnectEvent);
+        if (sakura_bS$preConnectEvent.isCanceled()) {
             ci.cancel();
         }
     }
@@ -38,8 +38,8 @@ public abstract class MixinGuiConnecting extends GuiScreen {
     @Overwrite
     public void drawScreen(int p_drawScreen_1_, int p_drawScreen_2_, float p_drawScreen_3_) {
         String msg = this.networkManager == null ? I18n.format("connect.connecting") : I18n.format("connect.authorizing");
-        if (raven_bS$preConnectEvent != null) {
-            msg = raven_bS$preConnectEvent.getExtraMessage().toString(msg);
+        if (sakura_bS$preConnectEvent != null) {
+            msg = sakura_bS$preConnectEvent.getExtraMessage().toString(msg);
         }
 
         this.drawDefaultBackground();

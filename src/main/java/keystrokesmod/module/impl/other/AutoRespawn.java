@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.other;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.ReceivePacketEvent;
 import java.util.concurrent.TimeUnit;
 import keystrokesmod.module.Module;
@@ -22,7 +22,7 @@ public class AutoRespawn extends Module{
    @SubscribeEvent
     public void onReceive(@NotNull ReceivePacketEvent event) {
         if(Minecraft.getMinecraft().thePlayer.isDead){
-            Raven.getExecutor().schedule(() ->
+            Sakura.getExecutor().schedule(() ->
                 PacketUtils.sendPacketNoEvent(new C16PacketClientStatus(C16PacketClientStatus.EnumState.PERFORM_RESPAWN)),
                 (long) delay.getInput(),
                 TimeUnit.MILLISECONDS);

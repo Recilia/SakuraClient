@@ -1,6 +1,6 @@
 package keystrokesmod.script;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.setting.impl.ButtonSetting;
 import keystrokesmod.utility.Utils;
@@ -16,19 +16,19 @@ public class Manager extends Module {
     public Manager() {
         super("Manager", category.scripts);
         this.registerSetting(new ButtonSetting("Load scripts", () -> {
-            if (Raven.scriptManager.compiler == null) {
+            if (Sakura.scriptManager.compiler == null) {
                 Utils.sendMessage("&cCompiler error, JDK not found");
             }
             else {
                 final long currentTimeMillis = System.currentTimeMillis();
                 if (Utils.getDifference(this.lastLoad, currentTimeMillis) > 1500) {
                     this.lastLoad = currentTimeMillis;
-                    Raven.scriptManager.loadScripts();
-                    if (Raven.scriptManager.scripts.isEmpty()) {
+                    Sakura.scriptManager.loadScripts();
+                    if (Sakura.scriptManager.scripts.isEmpty()) {
                         Utils.sendMessage("&7No scripts found.");
                     }
                     else {
-                        Utils.sendMessage("&7Loaded &b" + Raven.scriptManager.scripts.size() + " &7script" + ((Raven.scriptManager.scripts.size() == 1) ? "." : "s."));
+                        Utils.sendMessage("&7Loaded &b" + Sakura.scriptManager.scripts.size() + " &7script" + ((Sakura.scriptManager.scripts.size() == 1) ? "." : "s."));
                     }
                 }
                 else {
@@ -38,10 +38,10 @@ public class Manager extends Module {
         }));
         this.registerSetting(new ButtonSetting("Open folder", () -> {
             try {
-                Desktop.getDesktop().open(Raven.scriptManager.directory);
+                Desktop.getDesktop().open(Sakura.scriptManager.directory);
             }
             catch (IOException ex) {
-                Raven.scriptManager.directory.mkdirs();
+                Sakura.scriptManager.directory.mkdirs();
                 Utils.sendMessage("&cError locating folder, recreated.");
             }
         }));

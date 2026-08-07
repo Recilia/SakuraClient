@@ -33,7 +33,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
 
-import static keystrokesmod.Raven.mc;
+import static keystrokesmod.Sakura.mc;
 
 @Mixin(EntityLivingBase.class)
 public abstract class MixinEntityLivingBase extends Entity {
@@ -46,16 +46,16 @@ public abstract class MixinEntityLivingBase extends Entity {
     }
 
     @Unique
-    private final Map<Integer, PotionEffect> raven_bS$activePotionsMap = Maps.newHashMap();
+    private final Map<Integer, PotionEffect> sakura_bS$activePotionsMap = Maps.newHashMap();
 
     @Unique
-    public PotionEffect raven_XD$getActivePotionEffect(@NotNull Potion potionIn) {
-        return this.raven_bS$activePotionsMap.get(potionIn.id);
+    public PotionEffect sakura$getActivePotionEffect(@NotNull Potion potionIn) {
+        return this.sakura_bS$activePotionsMap.get(potionIn.id);
     }
 
     @Unique
-    public boolean raven_XD$isPotionActive(@NotNull Potion potionIn) {
-        return this.raven_bS$activePotionsMap.containsKey(potionIn.id);
+    public boolean sakura$isPotionActive(@NotNull Potion potionIn) {
+        return this.sakura_bS$activePotionsMap.containsKey(potionIn.id);
     }
 
     @Inject(method = "moveEntityWithHeading", at = @At("HEAD"), cancellable = true)
@@ -140,8 +140,8 @@ public abstract class MixinEntityLivingBase extends Entity {
 
         this.motionY = jumpEvent.getMotionY();
 
-        if (this.raven_XD$isPotionActive(Potion.jump)) {
-            this.motionY += (float) (this.raven_XD$getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F;
+        if (this.sakura$isPotionActive(Potion.jump)) {
+            this.motionY += (float) (this.sakura$getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F;
         }
 
         if (this.isSprinting()) {

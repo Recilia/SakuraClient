@@ -1,7 +1,7 @@
 package keystrokesmod.utility.profile;
 
 import com.google.gson.*;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.clickgui.ClickGui;
 import keystrokesmod.clickgui.components.impl.CategoryComponent;
 import keystrokesmod.module.Module;
@@ -53,15 +53,15 @@ public class ProfileManager {
         jsonObject.addProperty("killmessage", KillMessage.killMessage);
         jsonObject.addProperty("keybind", profile.getModule().getKeycode());
         JsonArray jsonArray = new JsonArray();
-        for (Module module : Raven.moduleManager.getModules()) {
+        for (Module module : Sakura.moduleManager.getModules()) {
             if (module.ignoreOnSave) {
                 continue;
             }
             JsonObject moduleInformation = getJsonObject(module);
             jsonArray.add(moduleInformation);
         }
-        if (Raven.scriptManager != null && Raven.scriptManager.scripts != null) {
-            for (Module module : Raven.scriptManager.scripts.values()) {
+        if (Sakura.scriptManager != null && Sakura.scriptManager.scripts != null) {
+            for (Module module : Sakura.scriptManager.scripts.values()) {
                 if (module.ignoreOnSave) {
                     continue;
                 }
@@ -148,15 +148,15 @@ public class ProfileManager {
             if (!file.getName().equals(name + ".json")) {
                 continue;
             }
-            if (Raven.scriptManager != null) {
-                for (Module module : Raven.scriptManager.scripts.values()) {
+            if (Sakura.scriptManager != null) {
+                for (Module module : Sakura.scriptManager.scripts.values()) {
                     if (module.canBeEnabled()) {
                         module.disable();
                         module.setBind(0);
                     }
                 }
             }
-            for (Module module : Raven.getModuleManager().getModules()) {
+            for (Module module : Sakura.getModuleManager().getModules()) {
                 if (module.canBeEnabled()) {
                     module.disable();
                     module.setBind(0);
@@ -200,9 +200,9 @@ public class ProfileManager {
                         continue;
                     }
 
-                    Module module = Raven.moduleManager.getModule(moduleName);
-                    if (module == null && moduleName.startsWith("sc-") && Raven.scriptManager != null) {
-                        for (Module module1 : Raven.scriptManager.scripts.values()) {
+                    Module module = Sakura.moduleManager.getModule(moduleName);
+                    if (module == null && moduleName.startsWith("sc-") && Sakura.scriptManager != null) {
+                        for (Module module1 : Sakura.scriptManager.scripts.values()) {
                             if (module1.getName().equals(moduleName.substring(3))) {
                                 module = module1;
                             }
@@ -215,7 +215,7 @@ public class ProfileManager {
 
                     loadFromJsonObject(moduleInformation, module);
 
-                    Raven.currentProfile = getProfile(name);
+                    Sakura.currentProfile = getProfile(name);
                 }
 
                 if (!Objects.equals(name, "latest")) {
@@ -366,7 +366,7 @@ public class ProfileManager {
                     categoryComponent.reloadModules(true);
                 }
             }
-            Utils.sendMessage("&b" + Raven.profileManager.getProfileFiles().size() + " &7profiles loaded.");
+            Utils.sendMessage("&b" + Sakura.profileManager.getProfileFiles().size() + " &7profiles loaded.");
         }
     }
 

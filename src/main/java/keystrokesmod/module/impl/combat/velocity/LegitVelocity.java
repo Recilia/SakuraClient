@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.combat.velocity;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.PostVelocityEvent;
 import keystrokesmod.module.impl.combat.Velocity;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -55,7 +55,7 @@ public class LegitVelocity extends SubMode<Velocity> {
                         if (canJump())
                             mc.thePlayer.jump();
                     } else {
-                        Raven.getExecutor().schedule(() -> {
+                        Sakura.getExecutor().schedule(() -> {
                             if (canJump())
                                 mc.thePlayer.jump();
                         }, delay, TimeUnit.MILLISECONDS);

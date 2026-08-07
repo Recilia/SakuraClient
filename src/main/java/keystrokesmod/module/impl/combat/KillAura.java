@@ -1,7 +1,7 @@
 package keystrokesmod.module.impl.combat;
 
 import akka.japi.Pair;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.*;
 import keystrokesmod.module.ModuleManager;
 import keystrokesmod.module.impl.combat.autoclicker.DragClickAutoClicker;
@@ -313,16 +313,16 @@ public class KillAura extends IAutoClicker {
                 case 3:
                     if (lag) {
                         blinking = true;
-                        if (Raven.badPacketsHandler.playerSlot != mc.thePlayer.inventory.currentItem % 8 + 1) {
+                        if (Sakura.badPacketsHandler.playerSlot != mc.thePlayer.inventory.currentItem % 8 + 1) {
                             mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange( mc.thePlayer.inventory.currentItem % 8 + 1));
-                            Raven.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem % 8 + 1;
+                            Sakura.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem % 8 + 1;
                             swapped = true;
                         }
                         lag = false;
                     } else {
                         // check here for ghost later
                         mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
-                        Raven.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem;  // todo recode this with slot handler
+                        Sakura.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem;  // todo recode this with slot handler
                         swapped = false;
                         attackAndInteract(target, true);
                         sendBlock();
@@ -563,7 +563,7 @@ public class KillAura extends IAutoClicker {
 
     private void setBlockState(boolean state, boolean sendBlock, boolean sendUnBlock) {
         if (Utils.holdingSword()) {
-            if (sendBlock && !blocking && state && Utils.holdingSword() && !Raven.badPacketsHandler.C07) {
+            if (sendBlock && !blocking && state && Utils.holdingSword() && !Sakura.badPacketsHandler.C07) {
                 sendBlock();
             } else if (sendUnBlock && blocking && !state) {
                 unBlock();
@@ -727,9 +727,9 @@ public class KillAura extends IAutoClicker {
         if (!Utils.nullCheck()) return;
         releasePackets();
         blocking = false;
-        if (Raven.badPacketsHandler.playerSlot != mc.thePlayer.inventory.currentItem && swapped) {
+        if (Sakura.badPacketsHandler.playerSlot != mc.thePlayer.inventory.currentItem && swapped) {
             mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
-            Raven.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem;
+            Sakura.badPacketsHandler.playerSlot = mc.thePlayer.inventory.currentItem;
             swapped = false;
         }
         if (lag && unblock) {
@@ -743,7 +743,7 @@ public class KillAura extends IAutoClicker {
             synchronized (blinkedPackets) {
                 for (Packet<?> packet : blinkedPackets) {
                     if (packet instanceof C09PacketHeldItemChange) {
-                        Raven.badPacketsHandler.playerSlot = ((C09PacketHeldItemChange) packet).getSlotId();
+                        Sakura.badPacketsHandler.playerSlot = ((C09PacketHeldItemChange) packet).getSlotId();
                     }
                     PacketUtils.sendPacketNoEvent(packet);
                 }

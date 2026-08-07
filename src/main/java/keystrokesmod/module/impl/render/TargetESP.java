@@ -4,7 +4,7 @@ import keystrokesmod.module.Module;
 import keystrokesmod.module.impl.combat.KillAura;
 import keystrokesmod.module.impl.render.targetvisual.ITargetVisual;
 import keystrokesmod.module.impl.render.targetvisual.targetesp.JelloTargetESP;
-import keystrokesmod.module.impl.render.targetvisual.targetesp.RavenTargetESP;
+import keystrokesmod.module.impl.render.targetvisual.targetesp.SakuraTargetESP;
 import keystrokesmod.module.impl.render.targetvisual.targetesp.VapeTargetESP;
 import keystrokesmod.module.setting.impl.ButtonSetting;
 import keystrokesmod.module.setting.impl.ModeValue;
@@ -26,7 +26,7 @@ public class TargetESP extends Module {
     public TargetESP() {
         super("TargetESP", category.render);
         this.registerSetting(mode = new ModeValue("Mode", this)
-                .add(new RavenTargetESP("Raven", this))
+                .add(new SakuraTargetESP("Sakura", this))
                 .add(new JelloTargetESP("Jello", this))
                 .add(new VapeTargetESP("Vape", this))
         );

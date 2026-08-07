@@ -23,22 +23,22 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static keystrokesmod.Raven.mc;
+import static keystrokesmod.Sakura.mc;
 
 @Mixin(value = Minecraft.class, priority = 1001)
 public abstract class MixinMinecraft {
 
-    @Unique private @Nullable WorldClient raven_XD$lastWorld = null;
+    @Unique private @Nullable WorldClient sakura$lastWorld = null;
 
     @Inject(method = "runTick", at = @At("HEAD"))
     private void runTickPre(CallbackInfo ci) {
         MinecraftForge.EVENT_BUS.post(new PreTickEvent());
 
-        if (raven_XD$lastWorld != mc.theWorld && Utils.nullCheck()) {
+        if (sakura$lastWorld != mc.theWorld && Utils.nullCheck()) {
             MinecraftForge.EVENT_BUS.post(new WorldChangeEvent());
         }
 
-        this.raven_XD$lastWorld = mc.theWorld;
+        this.sakura$lastWorld = mc.theWorld;
     }
 
     @Inject(method = "runTick", at = @At(value = "INVOKE",

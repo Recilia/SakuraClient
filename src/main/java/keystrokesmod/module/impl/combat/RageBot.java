@@ -1,7 +1,7 @@
 package keystrokesmod.module.impl.combat;
 
 import akka.japi.Pair;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.PreUpdateEvent;
 import keystrokesmod.event.RotationEvent;
 import keystrokesmod.module.impl.combat.autoclicker.*;
@@ -110,7 +110,7 @@ public class RageBot extends IAutoClicker {
 
     @SubscribeEvent
     public void onRender(TickEvent.RenderTickEvent event) {
-        if (Raven.debugger) {
+        if (Sakura.debugger) {
             ItemStack stack = mc.thePlayer.inventory.armorInventory[3];
             Utils.sendMessage(String.valueOf(((ItemArmor) stack.getItem()).getColor(stack)));
         }

@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.player;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.PreMotionEvent;
 import keystrokesmod.event.RenderContainerEvent;
 import keystrokesmod.module.Module;
@@ -75,7 +75,7 @@ public class ChestStealer extends Module {
                 if (delay == 0) {
                     state = State.STEAL;
                 } else {
-                    Raven.getExecutor().schedule(
+                    Sakura.getExecutor().schedule(
                             () -> state = State.STEAL,
                             delay,
                             TimeUnit.MILLISECONDS

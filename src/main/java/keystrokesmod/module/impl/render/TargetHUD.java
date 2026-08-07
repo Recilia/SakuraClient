@@ -31,11 +31,11 @@ public class TargetHUD extends Module {
     public TargetHUD() {
         super("TargetHUD", category.render);
         this.registerSetting(mode = new ModeValue("Mode", this)
-                .add(new RavenTargetHUD("Raven", this))
+                .add(new SakuraTargetHUD("Sakura", this))
                 .add(new ExhibitionTargetHUD("Exhibition", this))
                 .add(new WurstTargetHUD("Wurst", this))
                 .add(new TestTargetHUD("Test", this))
-                .add(new RavenNewTargetHUD("RavenNew", this))
+                .add(new SakuraNewTargetHUD("SakuraNew", this))
         );
         this.registerSetting(onlyKillAura = new ButtonSetting("Only killAura", true));
     }

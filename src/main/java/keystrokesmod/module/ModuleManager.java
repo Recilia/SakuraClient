@@ -129,6 +129,7 @@ public class ModuleManager {
     public static AutoGapple autoGapple;
     public static RemoteShop remoteShop;
     public static Regen regen;
+    public static DiscordRpc discordRpc;
 
     public void register() {
 
@@ -141,7 +142,7 @@ public class ModuleManager {
         this.addModule(new Settings());
         this.addModule(new MiddleClick());
         this.addModule(notifications = new Notifications());
-        this.addModule(new DiscordRpc());
+        this.addModule(discordRpc = new DiscordRpc());
         this.addModule(language = new Language());
 
         // combat
@@ -320,6 +321,8 @@ public class ModuleManager {
         commandChat.enable();
         notifications.enable();
         clientTheme.enable();
+        discordRpc.enable();
+        customCape.enable();
         modules.sort(Comparator.comparing(Module::getPrettyName));
     }
 

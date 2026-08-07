@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.other;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.ReceivePacketEvent;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.impl.client.Notifications;
@@ -41,7 +41,7 @@ public class AutoRegister extends Module {
                 final String pwd = RandomStringUtils.randomAscii((int) length.getInput());
 
                 Notifications.sendNotification(Notifications.NotificationTypes.INFO, "Registering... (" + time + "ms)");
-                Raven.getExecutor().schedule(() -> {
+                Sakura.getExecutor().schedule(() -> {
                     PacketUtils.sendPacket(new C01PacketChatMessage(message.getOptions()[(int) message.getInput()].replace("<p>", pwd)));
                     Notifications.sendNotification(Notifications.NotificationTypes.INFO, "Registered. (" + pwd + ")");
                 }, time, TimeUnit.MILLISECONDS);

@@ -19,14 +19,14 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import static keystrokesmod.module.impl.render.TargetHUD.*;
 
-public class RavenTargetHUD extends SubMode<TargetHUD> implements ITargetVisual {
+public class SakuraTargetHUD extends SubMode<TargetHUD> implements ITargetVisual {
     private final ModeSetting theme;
     private final ModeSetting font;
     private final ButtonSetting showStatus;
     private final ButtonSetting healthColor;
     private final Animation healthBarAnimation = new Animation(Easing.EASE_OUT_CIRC, 150);
 
-    public RavenTargetHUD(String name, @NotNull TargetHUD parent) {
+    public SakuraTargetHUD(String name, @NotNull TargetHUD parent) {
         super(name, parent);
         this.registerSetting(theme = new ModeSetting("Theme", Theme.themes, 0));
         this.registerSetting(font = new ModeSetting("Font", new String[]{"Minecraft", "ProductSans", "Regular"}, 0));

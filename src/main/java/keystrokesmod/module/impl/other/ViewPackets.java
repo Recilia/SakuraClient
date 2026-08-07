@@ -52,7 +52,7 @@ public class ViewPackets extends Module {
         }
         final String s = b ? ("&a" + packet.getClass().getSimpleName()) : applyInfo(packet);
         final String string = ((compactC03.isToggled() && packet instanceof C03PacketPlayer) ? "&6" : "&d") + packet.getClass().getSimpleName();
-        final ChatComponentText chatComponentText = new ChatComponentText(Utils.formatColor("&7[&dR&7]&r &7" + (b ? "Received" : "Sent") + " packet (t:&b" + tick + "&7): "));
+        final ChatComponentText chatComponentText = new ChatComponentText(Utils.formatColor("&7[&dSakura&7]&r &7" + (b ? "Received" : "Sent") + " packet (t:&b" + tick + "&7): "));
         final ChatStyle chatStyle = new ChatStyle();
         chatStyle.setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText(Utils.formatColor(s))));
         ((IChatComponent)chatComponentText).appendSibling(new ChatComponentText(Utils.formatColor(string)).setChatStyle(chatStyle));

@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
 
-import static keystrokesmod.Raven.mc;
+import static keystrokesmod.Sakura.mc;
 
 
 @Mixin(GuiButton.class)
@@ -50,7 +50,7 @@ public abstract class MixinGuiButton extends Gui {
     @Shadow public String displayString;
 
     @Unique
-    private int ravenXD$hoverValue;
+    private int sakura$hoverValue;
 
     @Inject(method = "drawButton", at = @At("HEAD"), cancellable = true)
     public void onDrawButton(Minecraft minecraft, int x, int y, CallbackInfo ci) {
@@ -62,12 +62,12 @@ public abstract class MixinGuiButton extends Gui {
             this.hovered = x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height;
 
             if (hovered)
-                ravenXD$hoverValue = (int) Math.min(ravenXD$hoverValue + 4.0 * 150 / Minecraft.getDebugFPS(), 200);
+                sakura$hoverValue = (int) Math.min(sakura$hoverValue + 4.0 * 150 / Minecraft.getDebugFPS(), 200);
             else
-                ravenXD$hoverValue = (int) Math.max(ravenXD$hoverValue - 4.0 * 150 / Minecraft.getDebugFPS(), 102);
+                sakura$hoverValue = (int) Math.max(sakura$hoverValue - 4.0 * 150 / Minecraft.getDebugFPS(), 102);
 
-            Color rectColor = new Color(35, 37, 43, ravenXD$hoverValue);
-            rectColor = raven_XD$interpolateColorC(rectColor, ColorUtils.brighter(rectColor, 0.4f), -1);
+            Color rectColor = new Color(35, 37, 43, sakura$hoverValue);
+            rectColor = sakura$interpolateColorC(rectColor, ColorUtils.brighter(rectColor, 0.4f), -1);
             RenderUtils.drawBloomShadow(xPosition - 3, yPosition - 3, width + 6, height + 6, 12, new Color(0, 0, 0, 50), false);
             RRectUtils.drawRoundOutline(xPosition, this.yPosition, width, height, 3.5F, 0.0015f, rectColor, new Color(30, 30, 30, 100));
             if (ModuleManager.clientTheme.buttonBlur.isToggled())
@@ -87,7 +87,7 @@ public abstract class MixinGuiButton extends Gui {
 
     @Unique
     @Contract("_, _, _ -> new")
-    private static @NotNull Color raven_XD$interpolateColorC(final @NotNull Color color1, final @NotNull Color color2, float amount) {
+    private static @NotNull Color sakura$interpolateColorC(final @NotNull Color color1, final @NotNull Color color2, float amount) {
         amount = Math.min(1.0f, Math.max(0.0f, amount));
         return new Color(ColorUtils.interpolateInt(color1.getRed(), color2.getRed(), amount), ColorUtils.interpolateInt(color1.getGreen(), color2.getGreen(), amount), ColorUtils.interpolateInt(color1.getBlue(), color2.getBlue(), amount), ColorUtils.interpolateInt(color1.getAlpha(), color2.getAlpha(), amount));
     }

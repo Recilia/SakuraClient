@@ -98,7 +98,7 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
     private int positionUpdateTicks;
 
     @Unique
-    private boolean raven_bS$isHeadspaceFree(BlockPos p_isHeadspaceFree_1_, int p_isHeadspaceFree_2_) {
+    private boolean sakura_bS$isHeadspaceFree(BlockPos p_isHeadspaceFree_1_, int p_isHeadspaceFree_2_) {
         for(int y = 0; y < p_isHeadspaceFree_2_; ++y) {
             if (!this.isOpenBlockSpace(p_isHeadspaceFree_1_.add(0, y, 0))) {
                 return false;
@@ -400,25 +400,25 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
             double d0 = p_pushOutOfBlocks_1_ - (double) blockpos.getX();
             double d1 = p_pushOutOfBlocks_5_ - (double) blockpos.getZ();
             int entHeight = Math.max((int) Math.ceil(this.height), 1);
-            if (!this.raven_bS$isHeadspaceFree(blockpos, entHeight)) {
+            if (!this.sakura_bS$isHeadspaceFree(blockpos, entHeight)) {
                 Direction direction = null;
                 double d2 = 9999.0;
-                if (this.raven_bS$isHeadspaceFree(blockpos.west(), entHeight) && d0 < d2) {
+                if (this.sakura_bS$isHeadspaceFree(blockpos.west(), entHeight) && d0 < d2) {
                     d2 = d0;
                     direction = NEGATIVE_X;
                 }
 
-                if (this.raven_bS$isHeadspaceFree(blockpos.east(), entHeight) && 1.0 - d0 < d2) {
+                if (this.sakura_bS$isHeadspaceFree(blockpos.east(), entHeight) && 1.0 - d0 < d2) {
                     d2 = 1.0 - d0;
                     direction = POSITIVE_X;
                 }
 
-                if (this.raven_bS$isHeadspaceFree(blockpos.north(), entHeight) && d1 < d2) {
+                if (this.sakura_bS$isHeadspaceFree(blockpos.north(), entHeight) && d1 < d2) {
                     d2 = d1;
                     direction = NEGATIVE_Z;
                 }
 
-                if (this.raven_bS$isHeadspaceFree(blockpos.south(), entHeight) && 1.0 - d1 < d2) {
+                if (this.sakura_bS$isHeadspaceFree(blockpos.south(), entHeight) && 1.0 - d1 < d2) {
                     direction = POSITIVE_Z;
                 }
 

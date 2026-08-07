@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.other;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.impl.other.anticheats.PlayerManager;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -74,7 +74,7 @@ public class Anticheat extends Module {
             return;
         }
 
-        manager.update(Raven.mc);
+        manager.update(Sakura.mc);
     }
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.other;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.impl.client.Settings;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -31,7 +31,7 @@ public class StaffDetector extends Module {
 
         for (String s : STAFFLISTS) {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    Objects.requireNonNull(Raven.class.getResourceAsStream("/assets/keystrokesmod/stafflists/" + s + ".txt"))))) {
+                    Objects.requireNonNull(Sakura.class.getResourceAsStream("/assets/keystrokesmod/stafflists/" + s + ".txt"))))) {
                 Set<String> lines = new HashSet<>();
                 String line;
                 while ((line = reader.readLine()) != null) {

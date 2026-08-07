@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.world;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.*;
 import keystrokesmod.mixins.impl.client.KeyBindingAccessor;
 import keystrokesmod.module.ModuleManager;
@@ -853,7 +853,7 @@ public class Scaffold extends IAutoClicker {
             if (sneak$bridged >= sneakEveryBlocks.getInput()) {
                 sneak$bridged = 0;
                 ((KeyBindingAccessor) mc.gameSettings.keyBindSneak).setPressed(true);
-                Raven.getExecutor().schedule(() -> ((KeyBindingAccessor) mc.gameSettings.keyBindSneak).setPressed(Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode())), (long) sneakTime.getInput(), TimeUnit.MILLISECONDS);
+                Sakura.getExecutor().schedule(() -> ((KeyBindingAccessor) mc.gameSettings.keyBindSneak).setPressed(Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode())), (long) sneakTime.getInput(), TimeUnit.MILLISECONDS);
             }
         }
 

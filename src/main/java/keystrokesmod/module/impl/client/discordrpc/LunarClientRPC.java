@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 public class LunarClientRPC extends SubMode<DiscordRpc> {
     private final String clientId = "562286213059444737";
     private final String mappingUrl = "https://servermappings.lunarclientcdn.com/servers.json";
-    private static final String DEFAULT_SERVER_NAME = "Active in the launcher";
     private static final String DEFAULT_IMAGE = "logo-default";
     private static final String DEFAULT_SMALL_IMAGE = "logo-blue";
     private Map<String, ServerData> serverDataMap = new HashMap<>();
@@ -41,11 +40,32 @@ public class LunarClientRPC extends SubMode<DiscordRpc> {
     }
 
     @Override
+    public void onEnable() {
+        serveraddresses = null;
+        updateLaucherRPC();
+        DiscordEventHandlers handlers = new DiscordEventHandlers();
+        DiscordRPC.discordInitialize(clientId, handlers, true);
+        new Thread(() -> {
+            while (this.isEnabled()) {
+                DiscordRPC.discordRunCallbacks();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }, "Discord RPC Callback").start();
+        started = true;
+    }
+
+    @Override
     public void onUpdate() {
         String currentServerIP = mc.getCurrentServerData() != null ? mc.getCurrentServerData().serverIP : null;
 
-        if (!started || (!Utils.nullCheck() && DEFAULT_SERVER_NAME.equals(serverName)) ||
-                (currentServerIP != null && !currentServerIP.endsWith(serveraddresses))) {
+        if (!started
+                || (currentServerIP != null && !currentServerIP.equals(serveraddresses))
+                || (Utils.nullCheck() && currentServerIP == null && !"Playing Private Server".equals(serverName))
+                || (!Utils.nullCheck() && !"Active in Launcher".equals(serverName))) {
             if (started) {
                 onDisable();
             }

@@ -12,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import static keystrokesmod.Raven.mc;
+import static keystrokesmod.Sakura.mc;
 import static keystrokesmod.module.ModuleManager.scaffold;
 import static keystrokesmod.utility.Utils.isMoving;
 

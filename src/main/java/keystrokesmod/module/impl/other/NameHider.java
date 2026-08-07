@@ -8,7 +8,7 @@ import net.minecraft.client.network.NetworkPlayerInfo;
 
 public class NameHider extends Module {
     public static DescriptionSetting a;
-    public static String n = "raven";
+    public static String n = "sakura";
     public static ButtonSetting hideAllNames;
 
     public NameHider() {

@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.render;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.impl.player.ChestStealer;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -61,7 +61,7 @@ public class Watermark extends Module {
         this.registerSetting(shadow = new ButtonSetting("Shadow", true, textMode));
 
         for (String s : Arrays.asList("default", "enders")) {
-            try (InputStream stream = Objects.requireNonNull(Raven.class.getResourceAsStream("/assets/keystrokesmod/textures/watermarks/" + s + ".png"))) {
+            try (InputStream stream = Objects.requireNonNull(Sakura.class.getResourceAsStream("/assets/keystrokesmod/textures/watermarks/" + s + ".png"))) {
                 BufferedImage image = ImageIO.read(stream);
                 WATERMARK.put(s, Minecraft.getMinecraft().renderEngine.getDynamicTextureLocation(s, new DynamicTexture(image)));
             } catch (NullPointerException | IOException ignored) {
@@ -82,13 +82,13 @@ public class Watermark extends Module {
                 String text = "";
                 switch ((int) watermarkText.getInput()) {
                     case 0:
-                        text = "§r§f§lRaven §bX§9D §7";
+                        text = "§r§f§lSakura §7";
                         break;
                     case 1:
                         text = customName;
                         break;
                     case 2:
-                        text = "§r§f§lRaven§9Sense §rFPS:" + Minecraft.getDebugFPS() + " §r";
+                        text = "§r§f§lSakura§9Sense §rFPS:" + Minecraft.getDebugFPS() + " §r";
                         break;
                 }
 
@@ -108,10 +108,15 @@ public class Watermark extends Module {
                             font = FontManager.productSans20;
                     }
 
+                    float textW = (float) font.width(text);
                     font.drawString(text, posX, posY, Theme.getGradient((int) theme.getInput(), 0), shadow.isToggled());
+                    if ((int) watermarkText.getInput() == 0) {
+                        RenderUtils.drawImage(new ResourceLocation("keystrokesmod:textures/sakura.png"), posX + textW + 2, posY + 2, 10, 10);
+                        textW += 12;
+                    }
 
                     current$minX = posX;
-                    current$maxX = current$minX + font.width(text);
+                    current$maxX = current$minX + textW;
                     current$minY = posY;
                     current$maxY = (int) (current$minY + Math.round(font.height()));
                 }

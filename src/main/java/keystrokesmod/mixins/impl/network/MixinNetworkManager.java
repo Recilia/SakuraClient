@@ -2,7 +2,7 @@ package keystrokesmod.mixins.impl.network;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import io.netty.channel.ChannelHandlerContext;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.ReceivePacketEvent;
 import keystrokesmod.event.SendPacketEvent;
 import keystrokesmod.module.ModuleManager;
@@ -31,7 +31,7 @@ public abstract class MixinNetworkManager {
 
     @Inject(method = "sendPacket(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
     public void sendPacket(Packet<?> p_sendPacket_1_, CallbackInfo ci) {
-        if (Raven.mc.thePlayer == null || Raven.mc.theWorld == null || !this.isChannelOpen()) return;
+        if (Sakura.mc.thePlayer == null || Sakura.mc.theWorld == null || !this.isChannelOpen()) return;
         if (PacketUtils.skipSendEvent.contains(p_sendPacket_1_)) {
             PacketUtils.skipSendEvent.remove(p_sendPacket_1_);
             return;
@@ -47,7 +47,7 @@ public abstract class MixinNetworkManager {
     @Inject(method = "channelRead0(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
     public void receivePacket(ChannelHandlerContext p_channelRead0_1_, Packet<?> p_channelRead0_2_, CallbackInfo ci) {
         try {
-            if (Raven.mc.thePlayer == null || Raven.mc.theWorld == null || !this.isChannelOpen()) return;
+            if (Sakura.mc.thePlayer == null || Sakura.mc.theWorld == null || !this.isChannelOpen()) return;
             if (PacketUtils.skipReceiveEvent.contains(p_channelRead0_2_)) {
                 PacketUtils.skipReceiveEvent.remove(p_channelRead0_2_);
                 return;

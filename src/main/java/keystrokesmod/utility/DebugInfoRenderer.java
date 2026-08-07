@@ -1,6 +1,6 @@
 package keystrokesmod.utility;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.utility.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -12,7 +12,7 @@ public class DebugInfoRenderer extends net.minecraft.client.gui.Gui {
 
     @SubscribeEvent
     public void onRenderTick(RenderTickEvent ev) {
-        if (!Raven.debugger || ev.phase != TickEvent.Phase.END || !Utils.nullCheck()) {
+        if (!Sakura.debugger || ev.phase != TickEvent.Phase.END || !Utils.nullCheck()) {
             return;
         }
         if (mc.currentScreen == null) {

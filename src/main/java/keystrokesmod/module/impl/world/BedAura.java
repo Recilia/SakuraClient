@@ -1,6 +1,6 @@
 package keystrokesmod.module.impl.world;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.*;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.ModuleManager;
@@ -368,7 +368,7 @@ public class BedAura extends Module {
     }
 
     public void setPacketSlot(int slot) {
-        if (slot == currentSlot || slot == -1 || Raven.badPacketsHandler.playerSlot == slot) {
+        if (slot == currentSlot || slot == -1 || Sakura.badPacketsHandler.playerSlot == slot) {
             return;
         }
         mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(slot));

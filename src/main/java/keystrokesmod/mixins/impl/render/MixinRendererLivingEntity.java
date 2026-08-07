@@ -71,19 +71,19 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
                     else {
                         color = (new Color((int) ModuleManager.playerESP.red.getInput(), (int) ModuleManager.playerESP.green.getInput(), (int) ModuleManager.playerESP.blue.getInput())).getRGB();
                     }
-                    raven_bS$glColor(color);
+                    sakura_bS$glColor(color);
                     this.mainModel.render(p_renderModel_1_, p_renderModel_2_, p_renderModel_3_, p_renderModel_4_, p_renderModel_5_, p_renderModel_6_, p_renderModel_7_);
-                    raven_bS$renderOne();
-                    raven_bS$glColor(color);
+                    sakura_bS$renderOne();
+                    sakura_bS$glColor(color);
                     this.mainModel.render(p_renderModel_1_, p_renderModel_2_, p_renderModel_3_, p_renderModel_4_, p_renderModel_5_, p_renderModel_6_, p_renderModel_7_);
-                    raven_bS$renderTwo();
-                    raven_bS$glColor(color);
+                    sakura_bS$renderTwo();
+                    sakura_bS$glColor(color);
                     this.mainModel.render(p_renderModel_1_, p_renderModel_2_, p_renderModel_3_, p_renderModel_4_, p_renderModel_5_, p_renderModel_6_, p_renderModel_7_);
-                    raven_bS$renderThree();
-                    raven_bS$renderFour();
-                    raven_bS$glColor(color);
+                    sakura_bS$renderThree();
+                    sakura_bS$renderFour();
+                    sakura_bS$glColor(color);
                     this.mainModel.render(p_renderModel_1_, p_renderModel_2_, p_renderModel_3_, p_renderModel_4_, p_renderModel_5_, p_renderModel_6_, p_renderModel_7_);
-                    raven_bS$renderFive();
+                    sakura_bS$renderFive();
                     GL11.glColor4f(1, 1, 1, 1);
                     GlStateManager.popMatrix();
                 }
@@ -101,8 +101,8 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     }
 
     @Unique
-    private void raven_bS$renderOne() {
-        raven_bS$checkSetupFBO();
+    private void sakura_bS$renderOne() {
+        sakura_bS$checkSetupFBO();
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -120,22 +120,22 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     }
 
     @Unique
-    private void raven_bS$renderTwo() {
+    private void sakura_bS$renderTwo() {
         GL11.glStencilFunc(GL11.GL_NEVER, 0, 0xF);
         GL11.glStencilOp(GL11.GL_REPLACE, GL11.GL_REPLACE, GL11.GL_REPLACE);
         GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
     }
 
     @Unique
-    private void raven_bS$renderThree() {
+    private void sakura_bS$renderThree() {
         GL11.glStencilFunc(GL11.GL_EQUAL, 1, 0xF);
         GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_KEEP);
         GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE);
     }
 
     @Unique
-    private void raven_bS$renderFour() {
-        raven_bS$setColor(new Color(255, 255, 255));
+    private void sakura_bS$renderFour() {
+        sakura_bS$setColor(new Color(255, 255, 255));
         GL11.glDepthMask(false);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_POLYGON_OFFSET_LINE);
@@ -144,7 +144,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     }
 
     @Unique
-    private void raven_bS$renderFive() {
+    private void sakura_bS$renderFive() {
         GL11.glPolygonOffset(1.0F, 2000000F);
         GL11.glDisable(GL11.GL_POLYGON_OFFSET_LINE);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -160,22 +160,22 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     }
 
     @Unique
-    private void raven_bS$setColor(@NotNull Color c) {
+    private void sakura_bS$setColor(@NotNull Color c) {
         GL11.glColor4d(c.getRed() / 255f, c.getGreen() / 255f, c.getBlue() / 255f, c.getAlpha() / 255f);
     }
 
     @Unique
-    private void raven_bS$checkSetupFBO() {
+    private void sakura_bS$checkSetupFBO() {
         Framebuffer fbo = Minecraft.getMinecraft().getFramebuffer();
         if (fbo != null) {
             if (fbo.depthBuffer > -1) {
-                raven_bS$setupFBO(fbo);
+                sakura_bS$setupFBO(fbo);
                 fbo.depthBuffer = -1;
             }
         }
     }
     @Unique
-    private void raven_bS$setupFBO(@NotNull Framebuffer fbo) {
+    private void sakura_bS$setupFBO(@NotNull Framebuffer fbo) {
         EXTFramebufferObject.glDeleteRenderbuffersEXT(fbo.depthBuffer);
         int stencil_depth_buffer_ID = EXTFramebufferObject.glGenRenderbuffersEXT();
         EXTFramebufferObject.glBindRenderbufferEXT(EXTFramebufferObject.GL_RENDERBUFFER_EXT, stencil_depth_buffer_ID);
@@ -185,7 +185,7 @@ public abstract class MixinRendererLivingEntity<T extends EntityLivingBase> exte
     }
 
     @Unique
-    private void raven_bS$glColor(int color) {
+    private void sakura_bS$glColor(int color) {
         GL11.glColor4ub((byte) (color >> 16 & 0xFF), (byte) (color >> 8 & 0xFF), (byte) (color & 0xFF), (byte) (color >> 24 & 0xFF));
     }
 }

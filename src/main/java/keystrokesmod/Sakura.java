@@ -30,12 +30,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import org.jetbrains.annotations.NotNull;
 
 @Mod(
-        modid = "keystrokes",
-        name = "KeystrokesMod",
-        version = "1",
+        modid = "SakuraClient",
+        name = "Sakura",
+        version = "1.2",
         acceptedMinecraftVersions = "[1.8.9]"
 )
-public class Raven {
+public class Sakura {
     public static boolean debugger = false;
     public static Minecraft mc = Minecraft.getMinecraft();
     private static KeySrokeRenderer keySrokeRenderer;
@@ -55,7 +55,7 @@ public class Raven {
     public static int moduleCounter;
     public static int settingCounter;
 
-    public Raven() {
+    public Sakura() {
         moduleManager = new ModuleManager();
     }
 
@@ -79,6 +79,10 @@ public class Raven {
         profileManager = new ProfileManager();
         profileManager.loadProfiles();
         profileManager.loadProfile();
+        ModuleManager.discordRpc.enable(); // DiscordRPC is always enabled on startup
+        ModuleManager.customCape.enable(); // CustomCape is always enabled on startup
+        ModuleManager.discordRpc.setHidden(true);
+        ModuleManager.customCape.setHidden(true);
         Reflection.setKeyBindings();
         scriptManager.loadScripts();
         scriptManager.loadScripts();
@@ -88,7 +92,6 @@ public class Raven {
         FMLCommonHandler.instance().bus().register(ModuleManager.dynamicManager);
 
         I18nManager.init();
-        AutoUpdate.init();
     }
 
     @SubscribeEvent
@@ -130,14 +133,14 @@ public class Raven {
                             module.keybind();
                         }
                     }
-                    synchronized (Raven.profileManager.profiles) {
-                        for (Profile profile : Raven.profileManager.profiles) {
+                    synchronized (Sakura.profileManager.profiles) {
+                        for (Profile profile : Sakura.profileManager.profiles) {
                             if (mc.currentScreen == null) {
                                 profile.getModule().keybind();
                             }
                         }
                     }
-                    for (Module module : Raven.scriptManager.scripts.values()) {
+                    for (Module module : Sakura.scriptManager.scripts.values()) {
                         if (mc.currentScreen == null) {
                             module.keybind();
                         }

@@ -3,7 +3,7 @@ package keystrokesmod.utility;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.mojang.realmsclient.gui.ChatFormatting;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.ClickEvent;
 import keystrokesmod.mixins.impl.client.GuiScreenAccessor;
 import keystrokesmod.mixins.impl.client.KeyBindingAccessor;
@@ -65,7 +65,7 @@ import java.util.stream.IntStream;
 public class Utils {
     private static final Random rand = new Random();
     public static final Minecraft mc = Minecraft.getMinecraft();
-    public static final ChatComponentText PREFIX = new ChatComponentText("&7[&dR&7]&r ");
+    public static final ChatComponentText PREFIX = new ChatComponentText("&7[&dSakura&7]&r ");
     public static HashSet<String> friends = new HashSet<>();
     public static HashSet<String> enemies = new HashSet<>();
     public static final Logger log = LogManager.getLogger();
@@ -195,7 +195,7 @@ public class Utils {
 
     public static void sendMessage(String txt) {
         if (nullCheck()) {
-            String m = formatColor("&7[&dR&7]&r " + replace(txt));
+            String m = formatColor("&7[&dSakura&7]&r " + replace(txt));
             mc.thePlayer.addChatMessage(new ChatComponentText(m));
         }
     }
@@ -228,7 +228,7 @@ public class Utils {
     }
 
     static {
-        Raven.getExecutor().scheduleWithFixedDelay(() -> {
+        Sakura.getExecutor().scheduleWithFixedDelay(() -> {
             if (Utils.nullCheck() && !delayedMessage.isEmpty()) {
                 for (String s : delayedMessage) {
                     sendMessage(s);
@@ -240,7 +240,7 @@ public class Utils {
 
     public static void sendDebugMessage(String message) {
         if (nullCheck()) {
-            mc.thePlayer.addChatMessage(new ChatComponentText("§7[§dR§7]§r " + message));
+            mc.thePlayer.addChatMessage(new ChatComponentText("§7[§dSakura§7]§r " + message));
         }
     }
 

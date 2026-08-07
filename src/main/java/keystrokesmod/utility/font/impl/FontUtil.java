@@ -1,7 +1,7 @@
 package keystrokesmod.utility.font.impl;
 
-import keystrokesmod.Raven;
-import static keystrokesmod.Raven.mc;
+import keystrokesmod.Sakura;
+import static keystrokesmod.Sakura.mc;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class FontUtil {
 
-    private static final IResourceManager RESOURCE_MANAGER = Raven.mc.getResourceManager();
+    private static final IResourceManager RESOURCE_MANAGER = Sakura.mc.getResourceManager();
 
     public static Font getResource(Map<String, Font> locationMap, String location, int size) {
         Font font;

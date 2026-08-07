@@ -1,6 +1,6 @@
 package keystrokesmod.module;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.impl.client.Gui;
 import keystrokesmod.module.impl.client.Notifications;
 import keystrokesmod.module.impl.client.Settings;
@@ -50,6 +50,7 @@ public class Module {
     @Setter
     @Getter
     public boolean hidden = false;
+    public boolean hiddenInGui = false;
     public Script script = null;
 
     public Module(String moduleName, Module.category moduleCategory, int keycode) {
@@ -67,7 +68,7 @@ public class Module {
         this.settings = new ArrayList<>();
         this.settingsWeak = new WeakHashSet<>();
         if (!(this instanceof SubMode))
-            Raven.moduleCounter++;
+            Sakura.moduleCounter++;
     }
 
     public static @Nullable Module getModule(Class<? extends Module> a) {
@@ -134,7 +135,7 @@ public class Module {
         }
 
         if (this.script != null) {
-            Raven.scriptManager.onEnable(script);
+            Sakura.scriptManager.onEnable(script);
         }
         else {
             try {
@@ -152,7 +153,7 @@ public class Module {
         this.setEnabled(false);
         ModuleManager.organizedModules.remove(this);
         if (this.script != null) {
-            Raven.scriptManager.onDisable(script);
+            Sakura.scriptManager.onDisable(script);
         }
         else {
             try {

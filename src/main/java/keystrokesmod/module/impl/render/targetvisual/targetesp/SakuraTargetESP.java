@@ -9,10 +9,10 @@ import keystrokesmod.utility.render.RenderUtils;
 import net.minecraft.entity.EntityLivingBase;
 import org.jetbrains.annotations.NotNull;
 
-public class RavenTargetESP extends SubMode<TargetESP> implements ITargetVisual {
+public class SakuraTargetESP extends SubMode<TargetESP> implements ITargetVisual {
     private final ModeSetting theme;
 
-    public RavenTargetESP(String name, @NotNull TargetESP parent) {
+    public SakuraTargetESP(String name, @NotNull TargetESP parent) {
         super(name, parent);
         this.registerSetting(theme = new ModeSetting("Theme", Theme.themes, 0));
     }

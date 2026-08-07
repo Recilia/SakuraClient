@@ -35,7 +35,7 @@ public abstract class MixinLayerCape {
         if (p_doRenderLayer_1_.hasPlayerInfo() && !p_doRenderLayer_1_.isInvisible() && (p_doRenderLayer_1_.isWearing(EnumPlayerModelParts.CAPE) && p_doRenderLayer_1_.getLocationCape() != null || p_doRenderLayer_1_.equals(Minecraft.getMinecraft().thePlayer) && ModuleManager.customCape.isEnabled())) {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             if (p_doRenderLayer_1_.equals(Minecraft.getMinecraft().thePlayer) && ModuleManager.customCape.isEnabled()) {
-                this.playerRenderer.bindTexture(CustomCape.LOADED_CAPES.get((int) (CustomCape.cape.getInput())));
+                this.playerRenderer.bindTexture(CustomCape.getCape());
             }
             else {
                 this.playerRenderer.bindTexture(p_doRenderLayer_1_.getLocationCape());

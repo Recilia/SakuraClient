@@ -1,6 +1,6 @@
 package keystrokesmod.clickgui;
 
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.clickgui.components.Component;
 import keystrokesmod.clickgui.components.IComponent;
 import keystrokesmod.clickgui.components.impl.BindComponent;
@@ -16,8 +16,10 @@ import keystrokesmod.utility.Utils;
 import keystrokesmod.utility.font.FontManager;
 import keystrokesmod.utility.font.IFont;
 import keystrokesmod.utility.render.GradientBlur;
+import keystrokesmod.utility.render.RenderUtils;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -85,7 +87,7 @@ public class ClickGui extends GuiScreen {
 
     public void initMain() {
         (this.aT = this.aE = this.aR = new Timer(500.0F)).start();
-        this.sf = Raven.getExecutor().schedule(() -> (this.aL = new Timer(650.0F)).start(), 650L, TimeUnit.MILLISECONDS);
+        this.sf = Sakura.getExecutor().schedule(() -> (this.aL = new Timer(650.0F)).start(), 650L, TimeUnit.MILLISECONDS);
     }
 
     public void initGui() {
@@ -121,20 +123,7 @@ public class ClickGui extends GuiScreen {
         if (!Gui.removeWatermark.isToggled()) {
             int h = this.height / 4;
             int wd = this.width / 2;
-            int w_c = 30 - this.aT.getValueInt(0, 30, 3);
-            getFont().drawCenteredString("r", wd + 1 - w_c, h - 25, Utils.getChroma(2L, 1500L));
-            getFont().drawCenteredString("a", wd - w_c, h - 15, Utils.getChroma(2L, 1200L));
-            getFont().drawCenteredString("v", wd - w_c, h - 5, Utils.getChroma(2L, 900L));
-            getFont().drawCenteredString("e", wd - w_c, h + 5, Utils.getChroma(2L, 600L));
-            getFont().drawCenteredString("n", wd - w_c, h + 15, Utils.getChroma(2L, 300L));
-            getFont().drawCenteredString("XD", wd + 1 + w_c, h + 30, Utils.getChroma(2L, 0L));
-            this.drawVerticalLine(wd - 10 - w_c, h - 30, h + 43, Color.white.getRGB());
-            this.drawVerticalLine(wd + 10 + w_c, h - 30, h + 43, Color.white.getRGB());
-            if (this.aL != null) {
-                r = this.aL.getValueInt(0, 20, 2);
-                this.drawHorizontalLine(wd - 10, wd - 10 + r, h - 29, -1);
-                this.drawHorizontalLine(wd + 10, wd + 10 - r, h + 42, -1);
-            }
+            RenderUtils.drawImage(new ResourceLocation("keystrokesmod:textures/sakura.png"), wd - 22, h - 22, 44, 44);
         }
 
         for (Module.category category : clickHistory) {

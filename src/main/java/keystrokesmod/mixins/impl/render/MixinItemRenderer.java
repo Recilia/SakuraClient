@@ -56,7 +56,7 @@ public abstract class MixinItemRenderer {
     @Shadow private ItemStack itemToRender;
 
     @Unique
-    private boolean raven_XD$lastIsSpoofItem = false;
+    private boolean sakura$lastIsSpoofItem = false;
 
     /**
      * @author xia__mc
@@ -85,10 +85,10 @@ public abstract class MixinItemRenderer {
             if (itemToRender != null) {
                 if (itemToRender != SlotHandler.getHeldItem()) {
                     animationProgression = 0.0F;
-                    raven_XD$lastIsSpoofItem = true;
-                } else if (raven_XD$lastIsSpoofItem) {
+                    sakura$lastIsSpoofItem = true;
+                } else if (sakura$lastIsSpoofItem) {
                     animationProgression = 0.0F;
-                    raven_XD$lastIsSpoofItem = false;
+                    sakura$lastIsSpoofItem = false;
                 }
 
                 EnumAction enumaction = itemToRender.getItemUseAction();

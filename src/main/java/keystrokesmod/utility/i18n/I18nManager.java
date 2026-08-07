@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.setting.Setting;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -39,13 +39,13 @@ public class I18nManager {
             Map<Module, I18nModule> moduleMap = new HashMap<>();
             Map<String, String> replaceMap = new HashMap<>();
 
-            try (InputStream stream = Objects.requireNonNull(Raven.class.getResourceAsStream("/assets/keystrokesmod/i18n/" + s + ".json"))) {
+            try (InputStream stream = Objects.requireNonNull(Sakura.class.getResourceAsStream("/assets/keystrokesmod/i18n/" + s + ".json"))) {
                 JsonObject jsonObject = getJsonObject(stream);
 
                 if (jsonObject.has("modules")) {
                     JsonObject modulesObject = jsonObject.getAsJsonObject("modules");
 
-                    for (Module module : Raven.getModuleManager().getModules()) {
+                    for (Module module : Sakura.getModuleManager().getModules()) {
                         if (modulesObject.has(module.getName())) {
                             moduleMap.put(module, getI18nModule(module, modulesObject.getAsJsonObject(module.getName())));
                         }

@@ -1,7 +1,7 @@
 package keystrokesmod.module.impl.player;
 
 import akka.japi.Pair;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.event.PreMotionEvent;
 import keystrokesmod.module.Module;
 import keystrokesmod.module.setting.impl.ButtonSetting;
@@ -102,7 +102,7 @@ public class InvManager extends Module {
                 if (delay == 0) {
                     state = State.TASKING;
                 } else {
-                    Raven.getExecutor().schedule(
+                    Sakura.getExecutor().schedule(
                             () -> state = State.TASKING,
                             delay,
                             TimeUnit.MILLISECONDS

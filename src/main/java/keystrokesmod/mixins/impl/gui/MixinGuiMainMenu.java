@@ -2,13 +2,15 @@ package keystrokesmod.mixins.impl.gui;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import keystrokesmod.Raven;
+import keystrokesmod.Sakura;
 import keystrokesmod.module.ModuleManager;
 import keystrokesmod.utility.font.FontManager;
 import keystrokesmod.utility.render.BackgroundUtils;
+import keystrokesmod.utility.render.RenderUtils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -42,7 +44,12 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 
         BackgroundUtils.renderBackground(this);
 
-        FontManager.tenacity80.drawCenteredString("Raven XD", width / 2.0, height * 0.2, LOGO_COLOR);
+        double textWidth = FontManager.tenacity80.width("Sakura");
+        double emojiSize = 55;
+        double totalWidth = textWidth + 15 + emojiSize;
+        double startX = width / 2.0 - totalWidth / 2.0;
+        FontManager.tenacity80.drawString("Sakura", startX, height * 0.2, LOGO_COLOR);
+        RenderUtils.drawImage(new ResourceLocation("keystrokesmod:textures/sakura.png"), (float) (startX + textWidth + 15), (float) (height * 0.2 + 8), (float) emojiSize, (float) emojiSize);
 
         List<String> branding = Lists.reverse(FMLCommonHandler.instance().getBrandings(true));
 
@@ -56,7 +63,7 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
         ForgeHooksClient.renderMainMenu((GuiMainMenu) (Object) this, this.fontRendererObj, this.width, this.height);
         String s1 = "Copyright Mojang AB. Do not distribute!";
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
-        String s2 = Raven.moduleCounter + " modules and " + Raven.settingCounter + " settings loaded!";
+        String s2 = Sakura.moduleCounter + " modules and " + Sakura.settingCounter + " settings loaded!";
         this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, 2, -1);
 
         super.drawScreen(p_drawScreen_1_, p_drawScreen_2_, p_drawScreen_3_);

@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import static keystrokesmod.module.impl.render.TargetHUD.*;
 
-public class RavenNewTargetHUD extends SubMode<TargetHUD> implements ITargetVisual {
+public class SakuraNewTargetHUD extends SubMode<TargetHUD> implements ITargetVisual {
     public static final int SHADOW_COLOR = new Color(0, 0, 0, 80).getRGB();
     public static final int RECT_COLOR = new Color(255, 255, 255, 30).getRGB();
     public static final int TEXT_DIST_TO_RECT = 6;
@@ -28,7 +28,7 @@ public class RavenNewTargetHUD extends SubMode<TargetHUD> implements ITargetVisu
     private final ButtonSetting healthColor;
     private final Animation healthBarAnimation = new Animation(Easing.EASE_OUT_CIRC, 150);
 
-    public RavenNewTargetHUD(String name, @NotNull TargetHUD parent) {
+    public SakuraNewTargetHUD(String name, @NotNull TargetHUD parent) {
         super(name, parent);
         this.registerSetting(theme = new ModeSetting("Theme", Theme.themes, 0));
         this.registerSetting(font = new ModeSetting("Font", new String[]{"Minecraft", "ProductSans", "Regular"}, 0));
