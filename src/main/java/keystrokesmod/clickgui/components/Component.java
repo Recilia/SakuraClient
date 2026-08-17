@@ -2,7 +2,6 @@ package keystrokesmod.clickgui.components;
 
 import keystrokesmod.Sakura;
 import keystrokesmod.clickgui.components.impl.*;
-import keystrokesmod.module.ModuleManager;
 import keystrokesmod.module.impl.client.Gui;
 import keystrokesmod.module.setting.Setting;
 import keystrokesmod.module.setting.impl.*;
@@ -19,11 +18,6 @@ public abstract class Component implements IComponent {
     public static final int TOGGLE_DEFAULT_COLOR = (new Color(20, 255, 0)).getRGB();
     public static final int TOGGLE_HOVER_COLOR = (new Color(20, 162, 0)).getRGB();
 
-    public static final int NEW_DEFAULT_COLOR = new Color(0, 0, 0, 255).getRGB();
-    public static final int NEW_HOVER_COLOR = new Color(96, 96, 96).getRGB();
-    public static final int NEW_TOGGLE_DEFAULT_COLOR = (new Color(8, 136, 231)).getRGB();
-    public static final int NEW_TOGGLE_HOVER_COLOR = (new Color(5, 90, 152)).getRGB();
-
     protected ModuleComponent parent;
     protected int color = DEFAULT_COLOR;
     protected int toggleColor = TOGGLE_DEFAULT_COLOR;
@@ -37,13 +31,8 @@ public abstract class Component implements IComponent {
 
     public final void drawScreen(int x, int y) {
         boolean hover = isHover(x, y);
-        if (ModuleManager.clientTheme.test.isToggled()) {
-            color = hover ? NEW_HOVER_COLOR : NEW_DEFAULT_COLOR;
-            toggleColor = hover ? NEW_TOGGLE_HOVER_COLOR : NEW_TOGGLE_DEFAULT_COLOR;
-        } else {
-            color = hover ? HOVER_COLOR : DEFAULT_COLOR;
-            toggleColor = hover ? TOGGLE_HOVER_COLOR : TOGGLE_DEFAULT_COLOR;
-        }
+        color = hover ? HOVER_COLOR : DEFAULT_COLOR;
+        toggleColor = hover ? TOGGLE_HOVER_COLOR : TOGGLE_DEFAULT_COLOR;
         onDrawScreen(x, y);
 
         if (getSetting() != null && hover && getSetting().isVisible() && getParent().po && Gui.toolTip.isToggled() && getSetting().getPrettyToolTip() != null) {
