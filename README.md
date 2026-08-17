@@ -1,2 +1,5 @@
 Konnichiwa! Do you watch anime desu ka? Not sugoi desu! Watashi am learning japanese through all the anime watashi watches desu. Nani about the basics desu ka? so Have anata seen Kimetsu no Yaiba desu ka? sou desu ka? What have you seen so far desu nyaa~ SUGOIIIIIII DOMESTIC NA KANOJO IS KAKKOUII DESU NE Watashi hope so desu Kore wa a fun conversation!!! Watashi love talking about anime's!!!! x3 nuzzles ~murr~ hehe Anata should watch Grand Blue desu!! Its hilarious desu! Anata should also watch One Piece >.< Watch the first episode, anata will get hooked desu yo! Anata should also watch Arifureta: from commonplace to worlds strongest, its sugoi desu Sumimasen! Watashi am very tired desu! Watashi am going to sleep >.< Have a konbanwa!!
-anoo...................... my goal for this client is to make a better anticheat and detections for my server!!!!!!!! >w<!!!!!
+
+
+
+anoo............my goal for this client is to make a better anticheat and detections for my server!!!!!!!! >w<!!!!!
